@@ -14,9 +14,11 @@ def fetch_files_from_s3():
 
 def s3_client():
 	s3 = boto3.resource('s3')
+	return s3
 
 def dailypop_to_print_bucket():
-	s3_client().Bucket(TO_PRINT_FILES_BUCKET)
+	bucket = s3_client().Bucket(TO_PRINT_FILES_BUCKET)
+	return bucket
 
 def download_files_to_print():
 	s3_bucket = dailypop_to_print_bucket()
