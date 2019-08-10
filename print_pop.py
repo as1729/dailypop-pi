@@ -23,14 +23,8 @@ def dailypop_to_print_bucket():
 def download_files_to_print():
 	s3_bucket = dailypop_to_print_bucket()
 	# download file into current directory
-	print(s3_bucket)
-	print(s3_bucket.objects)
-	for i in s3_bucket.objects.all():
-	    print(i)
 	for i in s3_bucket.objects.filter(Prefix='dailypop-1'):
 	    base, filename = i.key.split('/')
-	    print(i)
-	    # print(base)
 	    if len(filename) == 0:
             	continue
 	    s3_bucket.download_file(i.key, '/home/pi/' + TO_PRINT_FILES_BUCKET + '/' + filename)
